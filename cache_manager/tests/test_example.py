@@ -1,7 +1,6 @@
 """This is an example test."""
 
-import pytest
-
 
 def test_example():
+    """Example test."""
     assert True
