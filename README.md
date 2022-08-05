@@ -5,19 +5,18 @@ The simplest Python cache for Data Scientists
 ## Example
 
 If you don't want to wait for a given `compute()` function to complete
-each time you run the script, you can use context manager to cache the
-output based on input parameters.
+each time you run the script, you can cache the output of the function
 
 ```python
 import cache_manager as cm
 
-with cm.cache():
-    result = compute(data)
+result = cm.cache(compute, (data)):
 
 ```
 
-The cached data is stored in `$HOME/.cache_manager/`. Based on the argument
-values,
+The cached data is stored in `$HOME/.cache_manager/`. Each time you run the
+function with identical input arguments, the output data will be loaded, not
+computed.
 
 ## FAQ
 

@@ -11,13 +11,6 @@ license = "Apache-2.0"
 
 readme = "README.md"
 
-packages = [
-    { include = "poetry", from = "src" }
-]
-include = [
-    { path = "tests", format = "sdist" }
-]
-
 homepage = "https://python-poetry.org/"
 repository = "https://github.com/smolendawid/cache-manager"
 documentation = ""
@@ -37,7 +30,12 @@ pep8 = "^1.7.1"
 autopep8 = "^1.6.0"
 pydocstyle = "^6.1.1"
 pytest = "^7.1.2"
+pandas = {version = "^1.4.3", optional = true}
+
+[tool.poetry.extras]
+pandas = ["pandas"]
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
