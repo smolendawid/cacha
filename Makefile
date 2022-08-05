@@ -23,7 +23,7 @@ test:
 check-all:
 	make check-format
 	${CMD} -m pylint ${PACKAGE_DIR}
-	${CMD} -m mypy --ignore-missing-imports g${PACKAGE_DIR}
+	${CMD} -m mypy --ignore-missing-imports ${PACKAGE_DIR}
 	
 check-format:
 	${CMD} -m black --check ${PACKAGE_DIR}
