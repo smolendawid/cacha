@@ -11,8 +11,11 @@ help:
 	@echo "the reference."
 	@echo "------------------------------------"
 
+install-prod:
+	poetry install --no-dev
+
 install:
-	poetry install
+	poetry install --extras pandas 
 
 test:
 	${CMD} -m pytest cache_manager/tests/
