@@ -15,7 +15,7 @@ install-prod:
 	poetry install --no-dev
 
 install:
-	poetry install --extras pandas 
+	poetry install --extras "pandas" 
 
 test:
 	${CMD} -m pytest cache_manager/tests/
