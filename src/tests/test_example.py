@@ -1,8 +1,8 @@
 """This is an example test."""
 
 import pytest
-import cache_manager as cm
-import cache_manager.tests.utils as ut
+import cacha
+import tests.utils as ut
 
 
 def test_basic_usage():
@@ -13,7 +13,7 @@ def test_basic_usage():
     """
     data = ut.download_wine_quality_data()
     data_raw = ut.remove_mean(data)
-    data_cm = cm.cache(ut.remove_mean, (data,))
+    data_cm = cacha.cache(ut.remove_mean, (data,))
 
     assert pytest.approx(data_raw.mean()) == 0
     assert pytest.approx(data_cm.mean()) == 0

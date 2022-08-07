@@ -14,9 +14,11 @@ For example:
 
 """
 
-from cache_manager.version import __version__  # pylint: disable=unused-import
+from cacha.version import __version__  # pylint: disable=unused-import
 
-import cache_manager.manager
+import cacha.manager
+import cacha.logging_utils
 
+cacha.logging_utils.configure_loggers(root_module_name=__name__)
 
-cache = cache_manager.manager.cache
+cache = cacha.manager.cache
