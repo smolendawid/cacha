@@ -5,32 +5,15 @@ import os
 import logging
 import typing as t
 import pathlib
-import cacha.io
+
+import cacha.cacha_io
 import cacha.store
+import cacha.hashing_tools as ht
 
 
 LOGGER = logging.getLogger(__name__)
 
 HOME = str(pathlib.Path.home())
-
-
-def _compute_hash(argument: t.Any = None):
-    """Compute hash from the Python object argument.
-
-    In order to hash the object in Python, it has to implement
-    the `__hash__()` function. It is not the case
-    """
-    return hash(argument)
-
-
-def hash_arguments(args):
-    """Compute hash for all the arguments passed to the module."""
-    return [str(_compute_hash(argument=arg)) for arg in args]
-
-
-def hash_callable(func):
-    """Hash the callable."""
-    return str(hash(func))
 
 
 def cache(
@@ -44,6 +27,8 @@ def cache(
             other arguments are ignored. If the key doesn't exist in
             the store, the value is computed and stored, it's loaded otherwise.
     """
+    if args is None:
+        args = ()
     if kwargs is None:
         kwargs = {}
 
@@ -53,9 +38,9 @@ def cache(
 
     if key is None:
         all_hashed_args = []
-        all_hashed_args += hash_arguments(args)
-        all_hashed_args += hash_arguments(kwargs)
-        hashed_callable = hash_callable(func)
+        all_hashed_args += ht.hash_arguments(args)
+        all_hashed_args += ht.hash_arguments(kwargs)
+        hashed_callable = ht.hash_callable(func)
         store_key = hashed_callable + "_".join(all_hashed_args)
 
     else:
@@ -65,11 +50,11 @@ def cache(
     cache_path = store.get(store_key)
     if cache_path:
         LOGGER.info("Cache loaded from: %s", cache_path)
-        result = cacha.io.load_cache(path=cache_path)
+        result = cacha.cacha_io.load_cache(path=cache_path)
     else:
         result = func(*args, **kwargs)  # type: ignore
         cache_path = os.path.join(HOME, ".cacha", store_key)
-        cacha.io.dump_cache(path=cache_path, obj=result)
+        cacha.cacha_io.dump_cache(path=cache_path, obj=result)
         store.set(store_key, cache_path)
     return result
 

@@ -33,10 +33,14 @@ jobs:
       - name: Run tests with pytest
         run: |
           make test
-    if: github.ref == 'refs/heads/main'
       - name: Build the package
         run: |
           make build
-      - name: Publish the package
-        run: |
-          make publish
+        uses: actions/upload-artifact@master
+        with:
+          name: package
+          path: dist
+
+      # - name: Publish the package
+      #   run: |
+      #     make publish

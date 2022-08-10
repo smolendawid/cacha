@@ -13,7 +13,7 @@ each time you run the script, you can cache it:
 ```python
 import cacha
 
-result = compute(data) # regular usage - slow
+result = compute(data) # regular usage, slow
 
 result = cacha.cache(compute, (data, ))  # usage with cache
 

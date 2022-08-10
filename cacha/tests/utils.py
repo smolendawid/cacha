@@ -27,10 +27,8 @@ def download_wine_quality_data() -> pd.DataFrame:
 
 def remove_mean(data: pd.DataFrame, column: str = None) -> pd.DataFrame:
     """For the `column`, remove the mean. If column is None, remove for all."""
-    data = data.copy()
     if column is None:
-        for selected_column in data.columns.values:
-            data[selected_column] -= data[selected_column].mean()
+        data -= data.mean(axis=0)
     else:
         data[column] -= data[column].mean()
     return data

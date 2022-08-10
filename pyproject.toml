@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "cache-manager"
+name = "cacha"
 version = "0.1.0"
 description = "A simple cache context manager for Data Scientists."
 
