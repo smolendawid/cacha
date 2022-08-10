@@ -6,11 +6,10 @@ For example:
 
 .. code:: python
 
-    import cacha as cm
+    import cacha
 
-    data
-    with cm.cache():
-        function
+    result = compute(data) # regular usage, slow
+    result = cacha.cache(compute, (data, ))  # usage with cache
 
 """
 import os

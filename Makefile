@@ -1,7 +1,7 @@
 # Signifies desired executable version
 CMD = poetry run python
 
-PACKAGE_DIR = src/
+PACKAGE_DIR = cacha/
 
 .PHONY = help setup test run clean
 
@@ -36,4 +36,5 @@ build:
 	poetry build
 
 publish:
-	poetry publish
+	# poetry publish
+	echo "Not implemented yet"

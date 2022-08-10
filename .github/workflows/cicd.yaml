@@ -1,20 +1,21 @@
-name: CI
+name: CI/CD
 on:
   push:
     branches:
       - dev
+      - main
   pull_request:
     branches:
       - dev
+      - main
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         # Run in all these versions of Python
-        python-version: [3.9]
+        python-version: ["3.8", "3.9", "3.10"]
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
@@ -33,3 +34,27 @@ jobs:
       - name: Run tests with pytest
         run: |
           make test
+      - name: Build the package
+        run: |
+          make build
+      - uses: actions/upload-artifact@master
+        with:
+          name: package-${{ matrix.python-version }}
+          path: dist/
+
+  publish:
+    needs: [build]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.8", "3.9", "3.10"]
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - uses: actions/download-artifact@v2
+        with:
+          name: package-${{ matrix.python-version }}
+      - name: Publish the package
+        run: |
+          make publish
