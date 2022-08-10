@@ -8,7 +8,7 @@ on:
       - main
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
 
     strategy:
@@ -36,11 +36,23 @@ jobs:
       - name: Build the package
         run: |
           make build
-        uses: actions/upload-artifact@master
+      - uses: actions/upload-artifact@master
         with:
-          name: package
-          path: dist
+          name: package-${{ matrix.python-version }}
+          path: dist/
 
-      # - name: Publish the package
-      #   run: |
-      #     make publish
+jobs:
+  test:
+    runs-on: build
+
+    strategy:
+      matrix:
+        # Run in all these versions of Python
+        python-version: [3.8, 3.9, 3.10, 3.11]
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: package-${{ matrix.python-version }}
+      - name: Publish the package
+        run: |
+          make publish
