@@ -1,37 +1,49 @@
 ## Cacha
 
-The simplest Python cache for Data Scientist,
+The simplest Python cache for Data Scientist:
+
+- cache on disk, use between runs,
+- use at function call, not definition.
 
 ## Example
 
 If you don't want to wait for a given `compute()` function to complete
-each time you run the script, you can cache the output of the function
+each time you run the script, you can cache it:
 
 ```python
 import cacha
 
-result = cacha.cache(compute, (data)):
+result = compute(data) # regular usage - slow
+
+result = cacha.cache(compute, (data, ))  # usage with cache
 
 ```
 
 The cached data is stored in `$HOME/.cacha/`. Each time you run the
-function with identical input arguments, the output data will be loaded, not
-computed.
+function with identical input arguments, the output data will be loaded,
+instead of being computed.
 
-It can be easily used with popular data structures as pandas DataFrame or
-numpy array. In case of complicated python objects that can't be easily hasheed,
-you can use additional `key` parameter that forces saving the cache based on
-the `key` value.
+It can be easily used with popular data structures like `pandas.DataFrame` or
+`numpy.array`. In case of complicated python objects that can't be easily
+hashed, you can use additional `key` parameter that forces saving the cache
+based on the `key` value.
+
+```python
+import cacha
+
+result = cacha.cache(compute, (data, ), key="compute-v3")
+
+```
 
 ## FAQ
 
 **How is it different other caching packages?**
 
-In contrary to many tools, cacha
+In contrary to many other tools, _cacha_:
 
-- is used at the function call, not definition. Many packages the `@cache`
-  decorator that has to be used before definition of a function that is
-  not easy enough to use.
+- is used at the function call, not definition. Many packages implement
+  the `@cache` decorator that has to be used before definition of
+  a function that is not easy enough to use.
 - it stores the cache on disk which means you can use cache between runs.
   This is convenient in data science work.
 
