@@ -10,7 +10,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         # Run in all these versions of Python
@@ -41,13 +40,10 @@ jobs:
           name: package-${{ matrix.python-version }}
           path: dist/
 
-jobs:
-  test:
-    runs-on: build
-
+  publish:
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        # Run in all these versions of Python
         python-version: [3.8, 3.9, 3.10, 3.11]
     steps:
       - uses: actions/download-artifact@v2
