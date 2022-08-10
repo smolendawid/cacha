@@ -1,7 +1,7 @@
 # Signifies desired executable version
 CMD = poetry run python
 
-PACKAGE_DIR = cache_manager/
+PACKAGE_DIR = src/
 
 .PHONY = help setup test run clean
 
@@ -11,16 +11,19 @@ help:
 	@echo "the reference."
 	@echo "------------------------------------"
 
+install-prod:
+	poetry install --no-dev
+
 install:
-	poetry install
+	poetry install --extras "pandas" 
 
 test:
-	${CMD} -m pytest cache_manager/tests/
+	${CMD} -m pytest cacha/tests/
 
 check-all:
 	make check-format
 	${CMD} -m pylint ${PACKAGE_DIR}
-	${CMD} -m mypy ${PACKAGE_DIR}
+	${CMD} -m mypy --ignore-missing-imports ${PACKAGE_DIR}
 	
 check-format:
 	${CMD} -m black --check ${PACKAGE_DIR}
