@@ -1,3 +1,10 @@
+"""Hashing tools.
+With data science tools in mind, the hashing should be possible
+to perform on various data structures such as pandas.DataFrame,
+nympy.array. The trade-off for simplicity is adding the libraries as
+the project dependencies.
+"""
+
 import hashlib
 import json
 import typing as t
