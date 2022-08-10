@@ -8,5 +8,5 @@ class KeyValueStore(abc.ABC):
     def set(self, key: str, value: str):
         """Set the key value pair."""
 
-    def get(self, key: str):
+    def get(self, key: str) -> str:
         """Get the value for the key."""

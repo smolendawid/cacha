@@ -1,9 +1,9 @@
 """Logging configuration."""
-import logging
+import logging.config
 
 
 # Logging format example:
-# 2018/11/20 12:36:37 INFO cache_manager.cache: Message
+# 2018/11/20 12:36:37 INFO cacha.cache: Message
 LOGGING_LINE_FORMAT = "%(asctime)s %(levelname)s %(name)s: %(message)s"
 LOGGING_DATETIME_FORMAT = "%Y/%m/%d %H:%M:%S"
 

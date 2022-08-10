@@ -1,7 +1,7 @@
 # Signifies desired executable version
 CMD = poetry run python
 
-PACKAGE_DIR = cache_manager/
+PACKAGE_DIR = src/
 
 .PHONY = help setup test run clean
 
@@ -18,7 +18,7 @@ install:
 	poetry install --extras "pandas" 
 
 test:
-	${CMD} -m pytest cache_manager/tests/
+	${CMD} -m pytest cacha/tests/
 
 check-all:
 	make check-format
