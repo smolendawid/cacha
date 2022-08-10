@@ -2,7 +2,7 @@
 
 import pytest
 import cacha
-import tests.utils as ut
+import cacha.tests.utils as ut
 
 
 def test_basic_usage():
@@ -27,6 +27,8 @@ def test_basic_usage_with_kwargs():
     """
     data = ut.download_wine_quality_data()
     column = "quality"
-    data_cm = cacha.cache(ut.remove_mean, {"data": data, "column": column})
+    data_cm = cacha.cache(
+        ut.remove_mean, kwargs={"data": data, "column": column}
+    )
 
     assert pytest.approx(data_cm[column].mean()) == 0
