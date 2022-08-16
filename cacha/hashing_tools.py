@@ -13,6 +13,8 @@ import inspect
 import pandas as pd
 import numpy as np
 
+LOGGER = logging.getLogger(__name__)
+
 
 def _compute_hash(argument: t.Hashable) -> str:
     """Compute hash from the Python object argument."""
@@ -28,11 +30,15 @@ def _make_hashable(arg: t.Any) -> t.Hashable:
             # todo: check if it's faster to convert ot string or tuple
             return str(pd.util.hash_pandas_object(arg).values)
         elif isinstance(arg, np.ndarray):
-            return arg.tostring()
+            return arg.tostring()  # mypy: ignore
         elif callable(arg):
             return inspect.getsource(arg)
-    except TypeError:
-        
+    except TypeError(
+        f"Can't make the argument of a type {type(arg)} hashable. Only "
+        "supported types are standard library types and "
+        "pd.DataFrame, np.array."
+    ) as exc:
+        raise exc
     return arg
 
 
