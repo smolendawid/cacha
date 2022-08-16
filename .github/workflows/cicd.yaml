@@ -57,6 +57,9 @@ jobs:
         with:
           name: package-${{ matrix.python-version }}
           path: dist/
+      - name: Install poetry
+        run: |
+          pip install poetry==1.1.14
       - name: Check publishing the package
         env:
           PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
