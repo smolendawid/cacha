@@ -28,8 +28,7 @@ def _make_hashable(arg: t.Any) -> t.Hashable:
             # todo: check if it's faster to convert ot string or tuple
             return str(pd.util.hash_pandas_object(arg).values)
         if isinstance(arg, np.ndarray):
-            # type: ignore
-            return arg.tostring()
+            return arg.tostring()  # type: ignore
         if callable(arg):
             return inspect.getsource(arg)
     except TypeError as exc:
