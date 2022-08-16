@@ -36,7 +36,7 @@ build:
 	poetry build
 
 check-publish:
-	poetry publish --username $${{ PYPI_USERNAME }} --password ${{ PYPI_TOKEN_TEST }} --dry-run
+	poetry publish --username ${{ PYPI_USERNAME }} --password ${{ PYPI_TOKEN_TEST }} --dry-run
 
 publish:
 	poetry publish --username ${{ PYPI_USERNAME }} --password ${{ PYPI_TOKEN_TEST }}
