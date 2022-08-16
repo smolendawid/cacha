@@ -27,7 +27,7 @@ jobs:
         run: python -c "import sys; print(sys.version)"
       - name: Install poetry
         run: |
-          pip install poetry
+          pip install poetry==1.1.14
       - name: Build the package
         run: |
           make build
@@ -53,6 +53,9 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
+      - name: Install poetry
+        run: |
+          pip install poetry==1.1.14
       - name: Install the package
         run: |
           pip install dist/*.whl
