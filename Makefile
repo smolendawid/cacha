@@ -35,6 +35,8 @@ build:
 	rm -rf dist
 	poetry build
 
+check-publish:
+	poetry publish --username ${PYPI_USERNAME} --password ${PYPI_TOKEN} --dry-run
+
 publish:
-	# poetry publish
-	echo "Not implemented yet"
+	poetry publish --username ${PYPI_USERNAME} --password ${PYPI_TOKEN}

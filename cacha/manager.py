@@ -47,6 +47,7 @@ def cache(
         LOGGER.info("Caching based key: %s, because key was provided", key)
         store_key = key
 
+    # Check if a key exists in the store
     cache_path = store.get(store_key)
     if cache_path:
         LOGGER.info("Cache loaded from: %s", cache_path)
