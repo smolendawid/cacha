@@ -36,7 +36,8 @@ build:
 	poetry build
 
 check-publish:
-	poetry publish --username ${{ PYPI_USERNAME }} --password ${{ PYPI_TOKEN_TEST }} --dry-run --repository https://test.pypi.org/legacy/
+	poetry config repositories.test-pypi https://test.pypi.org/legacy/
+	poetry publish --username ${{ PYPI_USERNAME }} --password ${{ PYPI_TOKEN_TEST }} --dry-run --repository test-pypi
 
 publish:
-	poetry publish --username ${{ PYPI_USERNAME }} --password ${{ PYPI_TOKEN_TEST }} --repository https://test.pypi.org/legacy/
+	poetry publish --username ${{ PYPI_USERNAME }} --password ${{ PYPI_TOKEN_TEST }} --repository test-pypi
