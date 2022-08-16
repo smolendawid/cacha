@@ -48,6 +48,7 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: package-${{ matrix.python-version }}
+          path: dist/
       - name: Set Up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
@@ -75,19 +76,23 @@ jobs:
       matrix:
         python-version: ["3.8", "3.9", "3.10"]
     if: github.ref == 'refs/heads/main'
+    # if: github.event_name == 'push' && github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, 'chore(release):')
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
       - uses: actions/download-artifact@v2
         with:
           name: package-${{ matrix.python-version }}
+          path: dist/
       - name: Check publishing the package
         env:
           PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
+          PYPI_USERNAME: ${{ secrets.PYPI_USERNAME }}
         run: |
           make check-publish
-      - name: Publish the package
-        env:
-          PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
-        run: |
-          make publish
+      # - name: Publish the package
+      #   env:
+      #     PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
+      #     PYPI_USERNAME: ${{ secrets.PYPI_USERNAME }}
+      #   run: |
+      #     make publish
