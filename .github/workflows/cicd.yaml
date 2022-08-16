@@ -28,6 +28,12 @@ jobs:
       - name: Install poetry
         run: |
           pip install poetry==1.1.14
+      - name: Install dependencies
+        run: |
+          make install
+      - name: Run tests with pytest
+        run: |
+          make test
       - name: Build the package
         run: |
           make build
@@ -36,44 +42,8 @@ jobs:
           name: package-${{ matrix.python-version }}
           path: dist/
 
-  test:
-    needs: [build]
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: ["3.8", "3.9", "3.10"]
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v2
-      - uses: actions/download-artifact@v2
-        with:
-          name: package-${{ matrix.python-version }}
-          path: dist/
-      - name: Set Up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
-        with:
-          python-version: ${{ matrix.python-version }}
-      - name: Install poetry
-        run: |
-          pip install poetry==1.1.14
-      - name: Install the package
-        run: |
-          pip install dist/*.whl
-      - name: Install dependencies
-        run: |
-          make install
-      - name: Remove the cacha package files
-        # This is because we want to run tests using the built
-        # package, not using the local files directly.
-        run: |
-          rm -r cacha/store
-          rm -r cacha/*.py
-      - name: Run tests with pytest
-        run: |
-          make test
-
   publish:
-    needs: [test]
+    needs: [build]
     runs-on: ubuntu-latest
     strategy:
       matrix:
