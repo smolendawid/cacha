@@ -11,11 +11,14 @@ help:
 	@echo "the reference."
 	@echo "------------------------------------"
 
+install-poetry:
+	pip install poetry==1.1.14
+	
 install-prod:
 	poetry install --no-dev
 
 install:
-	poetry install --extras "pandas" 
+	poetry install
 
 test:
 	${CMD} -m pytest cacha/tests/
@@ -35,6 +38,14 @@ build:
 	rm -rf dist
 	poetry build
 
+bump-version:
+	git config --global user.name "github-actions"
+	git config --global user.email "action@github.com"
+	semantic-release version -D commit_author="github-actions <action@github.com>"
+
+check-publish:
+	poetry config repositories.test-pypi https://test.pypi.org/legacy/
+	poetry publish --username ${{ PYPI_USERNAME }} --password ${{ PYPI_TOKEN_TEST }} --dry-run --repository test-pypi
+
 publish:
-	# poetry publish
-	echo "Not implemented yet"
+	poetry publish --username ${{ PYPI_USERNAME }} --password ${{ PYPI_TOKEN_TEST }} --repository test-pypi
