@@ -81,14 +81,9 @@ jobs:
       - name: Python Semantic Release update tag
         run: |
           make bump-version
+          git push
         env:
-          GH_TOKEN: ${{secrets.GH_TOKEN}}
-          PyPI_TOKEN: ${{secrets.PYPI_TOKEN}}
-      - name: Deploy docs
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - name: Publish the package
         env:
           PYPI_TOKEN: ${{ secrets.PYPI_TOKEN_TEST }}
