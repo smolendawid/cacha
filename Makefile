@@ -36,7 +36,7 @@ build:
 	poetry build
 
 bump-version:
-    semantic-release version -v DEBUG
+	semantic-release version -v DEBUG
 
 check-publish:
 	poetry config repositories.test-pypi https://test.pypi.org/legacy/
