@@ -53,6 +53,10 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
+      - name: Set Up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
       - uses: actions/download-artifact@v2
         with:
           name: package-${{ matrix.python-version }}
@@ -68,9 +72,7 @@ jobs:
           make check-publish
       - name: Python Semantic Release update tag
         run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "action@github.com"
-          semantic-release version -D commit_author="github-actions <action@github.com>"
+          make bump-version
         env:
           GH_TOKEN: ${{secrets.GH_TOKEN}}
           PyPI_TOKEN: ${{secrets.PYPI_TOKEN}}
