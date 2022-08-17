@@ -39,9 +39,10 @@ build:
 	poetry build
 
 bump-version:
-	git config --global user.name "github-actions"
-	git config --global user.email "action@github.com"
-	semantic-release version -D commit_author="github-actions <action@github.com>"
+	semantic-release version -v DEBUG
+
+update-changelog:
+	semantic-release changelog
 
 check-publish:
 	poetry config repositories.test-pypi https://test.pypi.org/legacy/
