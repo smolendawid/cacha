@@ -11,6 +11,9 @@ help:
 	@echo "the reference."
 	@echo "------------------------------------"
 
+install-poetry:
+	pip install poetry==1.1.14
+	
 install-prod:
 	poetry install --no-dev
 

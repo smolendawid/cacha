@@ -27,7 +27,7 @@ jobs:
         run: python -c "import sys; print(sys.version)"
       - name: Install poetry
         run: |
-          pip install poetry==1.1.14
+          make install-poetry
       - name: Install dependencies
         run: |
           make install
@@ -63,9 +63,10 @@ jobs:
         with:
           name: package-${{ matrix.python-version }}
           path: dist/
+
       - name: Install poetry
         run: |
-          pip install poetry==1.1.14
+          make install-poetry
       - name: Install dependencies
         run: |
           make install
@@ -75,12 +76,18 @@ jobs:
           PYPI_USERNAME: ${{ secrets.PYPI_USERNAME }}
         run: |
           make check-publish
+
       - name: Python Semantic Release update tag
         run: |
           make bump-version
         env:
           GH_TOKEN: ${{secrets.GH_TOKEN}}
           PyPI_TOKEN: ${{secrets.PYPI_TOKEN}}
+      - name: Deploy docs
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
       - name: Publish the package
         env:
           PYPI_TOKEN: ${{ secrets.PYPI_TOKEN_TEST }}
