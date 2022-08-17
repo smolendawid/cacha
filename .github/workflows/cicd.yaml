@@ -66,6 +66,14 @@ jobs:
           PYPI_USERNAME: ${{ secrets.PYPI_USERNAME }}
         run: |
           make check-publish
+      - name: Python Semantic Release update tag
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "action@github.com"
+          semantic-release version -D commit_author="github-actions <action@github.com>"
+        env:
+          GH_TOKEN: ${{secrets.GH_TOKEN}}
+          PyPI_TOKEN: ${{secrets.PYPI_TOKEN}}
       - name: Publish the package
         env:
           PYPI_TOKEN: ${{ secrets.PYPI_TOKEN_TEST }}

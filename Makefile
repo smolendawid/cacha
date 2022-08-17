@@ -35,6 +35,9 @@ build:
 	rm -rf dist
 	poetry build
 
+bump-version:
+    semantic-release version -v DEBUG
+
 check-publish:
 	poetry config repositories.test-pypi https://test.pypi.org/legacy/
 	poetry publish --username ${{ PYPI_USERNAME }} --password ${{ PYPI_TOKEN_TEST }} --dry-run --repository test-pypi
