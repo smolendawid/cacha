@@ -39,7 +39,7 @@ bump-version:
 	pip install python-semantic-release==7.31.2
 	git config --global user.name "github-actions"
 	git config --global user.email "action@github.com"
-	python -m semantic-release version -D commit_author="github-actions <action@github.com>"
+	semantic-release version -D commit_author="github-actions <action@github.com>"
 
 check-publish:
 	poetry config repositories.test-pypi https://test.pypi.org/legacy/
