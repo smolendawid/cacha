@@ -42,6 +42,10 @@ version_variable = [
     "cacha/version.py:__version__",
     "pyproject.toml:version"
 ]
+branch = "main"
+upload_to_pypi = false
+upload_to_release = true
+build_command = "poetry build"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
