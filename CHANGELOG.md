@@ -1,5 +1,10 @@
 <!--next-version-placeholder-->
 
+## v0.6.0 (2022-09-02)
+### Feature
+* First complete version ([`58a6040`](https://github.com/smolendawid/cacha/commit/58a6040ab2c19e1e8bc9ace487237be627321738))
+* **tests:** Script for pip package tests ([`b2c11a1`](https://github.com/smolendawid/cacha/commit/b2c11a1f358648acc825a8b5738caa75b53bd7e4))
+
 ## v0.5.0 (2022-09-02)
 ### Feature
 * **tests:** Tests for pandas and numpy ([#6](https://github.com/smolendawid/cacha/issues/6)) ([`8130fd0`](https://github.com/smolendawid/cacha/commit/8130fd0998165f15addf08a14dd600437642b751))
