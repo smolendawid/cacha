@@ -15,8 +15,11 @@ def test_basic_usage():
     data_raw = ut.remove_mean(data)
     data_cm = cacha.cache(ut.remove_mean, (data,))
 
-    assert pytest.approx(data_raw.mean()) == 0
-    assert pytest.approx(data_cm.mean()) == 0
+    assert pytest.approx(data_raw["density"].mean()) == 0
+    assert pytest.approx(data_cm["density"].mean()) == 0
+    assert pytest.approx(data_cm["density"].mean()) == pytest.approx(
+        data_raw["density"].mean()
+    )
 
 
 def test_basic_usage_with_kwargs():

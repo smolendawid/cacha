@@ -56,3 +56,12 @@ In contrary to many other tools, _cacha_:
 
 Just delete the `$HOME/.cacha/` directory. You can also call `cacha.clean()`
 which has the same effect.
+
+**Why does it requre the pandas, numpy and other libraries?**
+In order to properly cache the objects from the specific packages, it is
+required to have the access to the functions they provide in that purpose.
+The main goal of cache is not to be lightweight but to provide the best
+developer experience.
+
+However most of the required packages are usually
+used in Machine Learning projects anyway.
