@@ -40,4 +40,4 @@ def test_raw_text():
 
     cached = cacha.cache(split, (string,))
 
-    assert len(cached) == 5
+    assert len(cached) == 4

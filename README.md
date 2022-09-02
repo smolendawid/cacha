@@ -1,5 +1,11 @@
 ## Cacha
 
+---
+
+[![CI/CD](https://github.com/smolendawid/cacha/actions/workflows/cicd.yaml/badge.svg)](https://github.com/smolendawid/cacha/actions/workflows/cicd.yaml)
+[![PyPi](https://img.shields.io/pypi/v/cacha?label=PyPI&logo=pypi)](https://pypi.org/project/cacha/)
+[![License](https://img.shields.io/pypi/l/cacha.svg)](https://github.com/smolendawid/cacha/blob/main/LICENSE)
+
 The simplest Python cache for Data Scientist:
 
 - cache on disk, use between runs,
@@ -52,7 +58,7 @@ In contrary to many other tools, _cacha_:
 Just delete the `$HOME/.cacha/` directory. You can also call `cacha.clean()`
 which has the same effect.
 
-**Why does it require the `pandas, `numpy` and other libraries?**
+**Why does it require the `pandas`, `numpy` and other libraries?**
 
 To properly cache the objects from specific packages, it is necessary
 to have access to the functions they provide in that regard.
