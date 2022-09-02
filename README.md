@@ -25,7 +25,7 @@ instead of being computed.
 
 It can be easily used with popular data structures like `pandas.DataFrame` or
 `numpy.array`. In case of complicated python objects that can't be easily
-hashed, you can use additional `key` parameter that forces saving the cache
+hashed, you can use an additional `key` parameter that forces saving the cache
 based on the `key` value.
 
 ```python
@@ -52,9 +52,11 @@ In contrary to many other tools, _cacha_:
 Just delete the `$HOME/.cacha/` directory. You can also call `cacha.clean()`
 which has the same effect.
 
-**Why does it requre the pandas, numpy and other libraries?**
-In order to properly cache the objects from the specific packages, it is
-required to have the access to the functions they provide in that purpose.
+**Why does it require the `pandas, `numpy` and other libraries?**
+
+To properly cache the objects from specific packages, it is necessary
+to have access to the functions they provide in that regard.
+
 The main goal of cache is not to be lightweight but to provide the best
 developer experience.
 

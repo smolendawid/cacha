@@ -1,4 +1,4 @@
-cacha/tests/test_data_structures.py"""This is an example test."""
+"""This is an example test."""
 
 import pandas as pd
 import numpy as np
