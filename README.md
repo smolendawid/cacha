@@ -1,8 +1,3 @@
-## In development
-
-This is expected to be in development Q3 2022. Please do not rely on this
-software before the official release.
-
 ## Cacha
 
 The simplest Python cache for Data Scientist:
