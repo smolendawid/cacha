@@ -1,5 +1,9 @@
 <!--next-version-placeholder-->
 
+## v0.4.0 (2022-09-02)
+### Feature
+* **ci:** Pusing to pypi if semantic-release is co-author ([`d82d93e`](https://github.com/smolendawid/cacha/commit/d82d93e731f23bd17555aa8444735964de1f593f))
+
 ## v0.3.3 (2022-08-18)
 ### Fix
 * Clean unused ci ([`46e7fe0`](https://github.com/smolendawid/cacha/commit/46e7fe04ec7e7e346d526f3612d013dfad18ceec))

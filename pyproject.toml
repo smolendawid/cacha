@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "cacha"
-version = "0.3.3"
+version = "0.4.0"
 description = "A simple cache context manager for Data Scientists."
 
 authors = ["Dawid Smoleń <smolendawid@gmail.com>"]
