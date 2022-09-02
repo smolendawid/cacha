@@ -42,7 +42,7 @@ release:
 	semantic-release publish
 
 check-publish:
-	poetry publish --username ${{ PYPI_USERNAME }} --password ${{ PYPI_TOKEN_TEST }} --dry-run 
+	poetry publish --username ${{ PYPI_USERNAME }} --password ${{ PYPI_TOKEN }} --dry-run 
 
 publish:
-	poetry publish --username ${{ PYPI_USERNAME }} --password ${{ PYPI_TOKEN_TEST }}
+	poetry publish --username ${{ PYPI_USERNAME }} --password ${{ PYPI_TOKEN }}
