@@ -1,5 +1,9 @@
 <!--next-version-placeholder-->
 
+## v2.0.0 (2022-09-02)
+### Feature
+* Readme with tags, tests fixed ([#7](https://github.com/smolendawid/cacha/issues/7)) ([`21d8ce3`](https://github.com/smolendawid/cacha/commit/21d8ce3bede6d2fc7184f98f0792ec24778010c3))
+
 ## v1.0.0 (2022-09-02)
 ### Fix
 * Tests typo ([`0a53eb3`](https://github.com/smolendawid/cacha/commit/0a53eb31996ed4ea3a61b9bbd36bb0c40276a35e))
