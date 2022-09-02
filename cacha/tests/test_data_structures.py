@@ -1,9 +1,8 @@
 """This is an example test."""
 
-import pytest
-import cacha
 import pandas as pd
 import numpy as np
+import cacha
 
 
 def test_pandas():
