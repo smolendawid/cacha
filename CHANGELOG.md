@@ -1,5 +1,9 @@
 <!--next-version-placeholder-->
 
+## v1.0.0 (2022-09-02)
+### Fix
+* Tests typo ([`0a53eb3`](https://github.com/smolendawid/cacha/commit/0a53eb31996ed4ea3a61b9bbd36bb0c40276a35e))
+
 ## v0.6.0 (2022-09-02)
 ### Feature
 * First complete version ([`58a6040`](https://github.com/smolendawid/cacha/commit/58a6040ab2c19e1e8bc9ace487237be627321738))
