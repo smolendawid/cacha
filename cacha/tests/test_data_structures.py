@@ -1,4 +1,4 @@
-"""This is an example test."""
+cacha/tests/test_data_structures.py"""This is an example test."""
 
 import pandas as pd
 import numpy as np
@@ -31,7 +31,7 @@ def test_numpy():
 
 def test_raw_text():
     """Test caching for string object."""
-    string = "This is a long string"
+    string = "This should be split"
 
     def split(string: str) -> list:
         return string.split()
