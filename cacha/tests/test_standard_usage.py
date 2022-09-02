@@ -17,6 +17,7 @@ def test_basic_usage():
 
     assert pytest.approx(data_raw.mean()) == 0
     assert pytest.approx(data_cm.mean()) == 0
+    assert pytest.approx(data_cm.mean()) == pytest.approx(data_raw.mean())
 
 
 def test_basic_usage_with_kwargs():
@@ -27,6 +28,8 @@ def test_basic_usage_with_kwargs():
     """
     data = ut.download_wine_quality_data()
     column = "quality"
-    data_cm = cacha.cache(ut.remove_mean, kwargs={"data": data, "column": column})
+    data_cm = cacha.cache(
+        ut.remove_mean, kwargs={"data": data, "column": column}
+    )
 
     assert pytest.approx(data_cm[column].mean()) == 0
