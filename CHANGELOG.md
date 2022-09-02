@@ -1,5 +1,9 @@
 <!--next-version-placeholder-->
 
+## v0.5.0 (2022-09-02)
+### Feature
+* **tests:** Tests for pandas and numpy ([#6](https://github.com/smolendawid/cacha/issues/6)) ([`8130fd0`](https://github.com/smolendawid/cacha/commit/8130fd0998165f15addf08a14dd600437642b751))
+
 ## v0.4.0 (2022-09-02)
 ### Feature
 * **ci:** Pusing to pypi if semantic-release is co-author ([`d82d93e`](https://github.com/smolendawid/cacha/commit/d82d93e731f23bd17555aa8444735964de1f593f))
